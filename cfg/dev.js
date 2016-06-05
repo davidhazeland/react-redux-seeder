@@ -21,11 +21,6 @@ let config = Object.assign({}, baseConfig, {
     new webpack.NoErrorsPlugin(),
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      'jQuery': 'jquery',
-      'window.jQuery': 'jquery'
     })
   ],
   module: defaultSettings.getDefaultModules()

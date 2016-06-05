@@ -71,11 +71,6 @@ module.exports = {
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
     }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      'jQuery': 'jquery',
-      'window.jQuery': 'jquery'
-    }),
     new webpack.IgnorePlugin(
       new RegExp('react/lib/ReactContext')
     ),
