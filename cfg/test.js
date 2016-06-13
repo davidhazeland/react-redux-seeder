@@ -22,14 +22,7 @@ module.exports = {
   },
   module: {
     preLoaders: [
-      { test: /\.json$/, loader: 'json-loader' },
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'isparta-instrumenter-loader',
-        include: [
-          path.join(__dirname, '/../src')
-        ]
-      }
+      { test: /\.json$/, loader: 'json-loader' }
     ],
     loaders: [
       {
