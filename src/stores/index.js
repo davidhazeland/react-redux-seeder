@@ -9,7 +9,7 @@ const reducers = require('../reducers');
 const sagas = require('../sagas');
 
 const loggerMiddleware = createLogger({
-  predicate: () => config.appEnv === `dev`
+  predicate: () => config.appEnv === 'dev'
 });
 
 const createStoreWithMiddleware = applyMiddleware(
