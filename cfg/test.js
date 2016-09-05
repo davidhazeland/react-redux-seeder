@@ -46,16 +46,12 @@ module.exports = {
     extensions: [ '', '.js', '.jsx', '.json' ],
     alias: {
       actions: srcPath + 'actions/',
-      reducers: path.join(__dirname, '/../test/modules/reducers'),
       components: srcPath + 'components/',
-      sources: srcPath + 'sources/',
-      stores: srcPath + 'stores/',
       styles: srcPath + 'styles/',
       modules: srcPath + 'modules/',
       services: srcPath + 'services/',
       api: srcPath + 'api/',
       utils: srcPath + 'utils/',
-      helpers: srcPath + 'helpers/',
       routes: srcPath + 'routes/',
       config: srcPath + 'config/' + process.env.REACT_WEBPACK_ENV
     }
