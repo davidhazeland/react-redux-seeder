@@ -1,7 +1,7 @@
 import config from 'config';
 import { createStore, applyMiddleware } from 'redux';
 import createLogger from 'redux-logger';
-import sagaMiddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 import {routerMiddleware} from 'react-router-redux';
 import {browserHistory} from 'react-router';
 
@@ -12,15 +12,18 @@ const loggerMiddleware = createLogger({
   predicate: () => config.appEnv === 'dev'
 });
 
-const createStoreWithMiddleware = applyMiddleware(
-  sagaMiddleware(...sagas),
-  routerMiddleware(browserHistory),
-  loggerMiddleware // neat middleware that logs actions
-)(createStore);
+const sagaMiddleware = createSagaMiddleware();
 
 export default function (initialState) {
-  const store = createStoreWithMiddleware(reducers, initialState,
+  const store = createStore(reducers, applyMiddleware(
+    sagaMiddleware,
+    routerMiddleware(browserHistory),
+    loggerMiddleware // neat middleware that logs actions
+  ),
+    initialState,
     window.devToolsExtension ? window.devToolsExtension() : f => f);
+
+  sagaMiddleware.run(sagas);
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
